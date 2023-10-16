@@ -1,7 +1,7 @@
-package com.kratos.testItactions.form.settings;
+package com.kratos.testItactions.form.exportfromtestit.settings;
 
 import com.intellij.openapi.actionSystem.AnActionEvent;
-import com.kratos.testItactions.form.TestItSettings;
+import com.kratos.testItactions.form.exportfromtestit.TestItSettings;
 
 import javax.swing.*;
 import java.awt.*;

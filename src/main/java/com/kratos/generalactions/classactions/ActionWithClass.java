@@ -4,6 +4,7 @@ import com.intellij.openapi.actionSystem.AnActionEvent;
 import com.intellij.openapi.actionSystem.CommonDataKeys;
 import com.intellij.openapi.command.WriteCommandAction;
 import com.intellij.psi.*;
+import com.intellij.psi.codeStyle.JavaCodeStyleManager;
 import com.kratos.generalactions.classactions.enums.AnnotationsForClass;
 import com.kratos.generalactions.classactions.enums.ImportForClass;
 
@@ -76,5 +77,21 @@ public class ActionWithClass {
                 extendsList.add(superClassReference);
             }
         });
+    }
+
+    /**
+     * Метод для оптимизации импортов в классе
+     * @param event
+     */
+    public void optimizeImport(AnActionEvent event){
+        PsiFile psiFile = event.getData(CommonDataKeys.PSI_FILE);
+        if (!(psiFile instanceof PsiJavaFile)) {
+            return;
+        }
+        WriteCommandAction.runWriteCommandAction(psiFile.getProject(), () -> {
+            JavaCodeStyleManager codeStyleManager = JavaCodeStyleManager.getInstance(psiFile.getProject());
+            codeStyleManager.optimizeImports(psiFile);
+        });
+
     }
 }

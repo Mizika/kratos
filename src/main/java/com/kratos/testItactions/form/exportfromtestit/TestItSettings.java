@@ -1,4 +1,4 @@
-package com.kratos.testItactions.form;
+package com.kratos.testItactions.form.exportfromtestit;
 
 
 import com.intellij.openapi.actionSystem.AnActionEvent;
@@ -61,6 +61,7 @@ public class TestItSettings extends JPanel {
         setupMethod.addSetupMethod(event, testcaseInfo);
         tearDownMethod.addTearDownMethod(event, testcaseInfo);
         testMethod.createTestMethodFromTestIt(event, testcaseInfo);
+        actionWithClass.optimizeImport(event);
         frame.setVisible(false);
     }
 
